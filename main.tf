@@ -15,7 +15,6 @@ variable "tools" {
   }
 }
 
-variable "instance_type" {}
 
 module "tool_infra" {
   source         = "./module-infra"
