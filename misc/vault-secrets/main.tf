@@ -39,7 +39,7 @@ resource "vault_mount" "roboshop-dev" {
 }
 
 resource "vault_generic_secret" "roboshop-dev-cart" {
-  path = "${vault_mount.roboshop-dev.path}-cart"
+  path = "${vault_mount.roboshop-dev.path}/cart"
   data_json = <<EOT
   {
   "REDIS_HOST": "redis-dev.kommanuthala.store",
