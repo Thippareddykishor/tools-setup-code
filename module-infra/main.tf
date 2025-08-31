@@ -38,7 +38,7 @@ resource "aws_vpc_security_group_ingress_rule" "allow_tls_port" {
 resource "aws_route53_record" "private" {
   ttl = 10
   name = var.name
-  records = aws_instance.tool.private_ip
+  records = [aws_instance.tool.private_ip]
   zone_id = var.zone_id
   type = "A"
 }
@@ -46,7 +46,7 @@ resource "aws_route53_record" "private" {
 resource "aws_route53_record" "public" {
   ttl = 10
   name = var.name
-  records = aws_instance.tool.public_ip
+  records = [aws_instance.tool.public_ip]
   zone_id = var.zone_id
   type = "A"
 }
