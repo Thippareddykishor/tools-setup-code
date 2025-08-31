@@ -49,5 +49,14 @@ resource "vault_generic_secret" "roboshop-dev-cart" {
   EOT
 }
 
+resource "vault_generic_secret" "roboshop-dev-catalogue" {
+  path = "${vault_mount.roboshop-dev.path}/catalogue"
+  data_json = <<EOT 
+  {
+  "MONGO" : "true",
+  "MONGO_URL" : "mongodb://mongodb-dev.kommanuthala.store:27017/catalogue"
+   }
+  EOT
+}
 
 
