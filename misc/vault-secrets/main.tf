@@ -72,4 +72,27 @@ resource "vault_generic_secret" "roboshop-dev-frontend" {
   EOT
 }
 
+resource "vault_generic_secret" "roboshop-dev-payment" {
+  path = "${vault_mount.roboshop-dev.path}/payment"
+  data_json = <<EOT
+  {
+  "CART_HOST" : "cart-dev.kommanuthala.store",
+  "CART_PORT" : "8080",
+  "USER_HOST" : "user-dev.kommanuthala.store",
+  "USER_PORT" : "8080",
+  "AMQP_HOST" : "rabbitmq-dev.kommanuthala.store",
+  "AMQP_USER" : "roboshop",
+  "AMQP_PASS" : "roboshop123"
+  }
+  EOT
+}
 
+resource "vault_generic_secret" "roboshop-dev-shipping" {
+  path = "${vault_mount.roboshop-dev.path}/shipping"
+  data_json = <<EOT
+  {
+  "CART_ENDPOINT": "cart-dev.kommanuthala.store:8080",
+  "DB_HOST" : "mysql-dev.kommanuthala.store"
+  }
+  EOT
+}
