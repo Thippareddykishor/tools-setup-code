@@ -48,3 +48,6 @@ resource "vault_generic_secret" "roboshop-dev-cart" {
   }
   EOT
 }
+
+
+
