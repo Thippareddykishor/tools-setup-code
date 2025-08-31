@@ -30,3 +30,21 @@ resource "vault_generic_secret" "ssh" {
   }
   EOT
 }
+
+resource "vault_mount" "roboshop-dev" {
+  path = "roboshop-dev"
+  type = "kv"
+  options = {version= "2"}
+  description = "Robo shop dev secrets"
+}
+
+resource "vault_generic_secret" "roboshop-dev-cart" {
+  path = "${vault_mount.roboshop-dev.path}-cart"
+  data_json = <<EOT
+  {
+  "REDIS_HOST": "redis-dev.kommanuthala.store",
+  "CATALOGUE_HOST": "catalogue-dev.kommanuthala.store",
+  "CATALOGUE_PORT": "8080"
+  }
+  EOT
+}
