@@ -51,11 +51,24 @@ resource "vault_generic_secret" "roboshop-dev-cart" {
 
 resource "vault_generic_secret" "roboshop-dev-catalogue" {
   path = "${vault_mount.roboshop-dev.path}/catalogue"
-  data_json = <<EOT 
+  data_json = <<EOT
   {
-  "MONGO": "true",
-  "MONGO_URL": "mongodb://mongodb-dev.kommanuthala.store:27017/catalogue"
-   }
+  "MONGO" : "true",
+  "MONGO_URL" : "mongodb://mongodb-dev.kommanuthala.store:27017/catalogue"
+  }
+  EOT
+}
+
+resource "vault_generic_secret" "roboshop-dev-frontend" {
+  path = "${vault_mount.roboshop-dev.path}/frontend"
+  data_json = <<EOT
+  {
+  "catalogue_url" : "http://catalogue-dev.kommanuthala.store:8080",
+  "user_url"      : "http://user-dev.kommanuthala.store:8080",
+  "cart_url"      :  "http://cart-dev.kommanuthala.store:8080",
+  "shipping_url"  :  "http://shipping-dev.kommanuthala.store:8080",
+  "payment_url"   :  "http://payment-dev.kommanuthala.store:8080"
+  }
   EOT
 }
 
