@@ -96,3 +96,13 @@ resource "vault_generic_secret" "roboshop-dev-shipping" {
   }
   EOT
 }
+
+resource "vault_generic_secret" "roboshop-dev-user" {
+  path = "${vault_mount.roboshop-dev.path}/user"
+  data_json = <<EOT
+  {
+  "REDIS_URL": "redis://redis-dev.kommanuthala.store:6379"
+  "MONGO_URL": "mongodb://mongodb-dev.kommanuthala.store:27017/users"
+  }
+  EOT
+}
