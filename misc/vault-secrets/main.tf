@@ -63,11 +63,11 @@ resource "vault_generic_secret" "roboshop-dev-frontend" {
   path = "${vault_mount.roboshop-dev.path}/frontend"
   data_json = <<EOT
   {
-  "catalogue_url" : "http://catalogue-dev.kommanuthala.store:8080",
-  "user_url"      : "http://user-dev.kommanuthala.store:8080",
-  "cart_url"      :  "http://cart-dev.kommanuthala.store:8080",
-  "shipping_url"  :  "http://shipping-dev.kommanuthala.store:8080",
-  "payment_url"   :  "http://payment-dev.kommanuthala.store:8080"
+  "catalogue" : "http://catalogue-dev.kommanuthala.store:8080",
+  "user"      : "http://user-dev.kommanuthala.store:8080",
+  "cart"      :  "http://cart-dev.kommanuthala.store:8080",
+  "shipping"  :  "http://shipping-dev.kommanuthala.store:8080",
+  "payment"   :  "http://payment-dev.kommanuthala.store:8080"
   }
   EOT
 }
