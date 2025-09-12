@@ -18,7 +18,7 @@
     dest: /actions-runner
     owner: github
     group: github
-    remote_scr: yes
+    remote_src: yes
     
 
 - name: configure github runner
