@@ -10,7 +10,7 @@
     group: github
     owner: github 
     path: /actions-runner
-    state: folder
+    state: directory
 
 - name: download github runner
   ansible.builtin.unarchive:
