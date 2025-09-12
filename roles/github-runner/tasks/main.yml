@@ -10,6 +10,7 @@
     group: github
     owner: github 
     path: /actions-runner
+    state: folder
 
 - name: download github runner
   ansible.builtin.unarchive:
@@ -18,6 +19,7 @@
     owner: github
     group: github
     remote_scr: yes
+    
 
 - name: configure github runner
   ansible.builtin.shell: ./config.cmd --url https://github.com/Thippareddykishor --token {{{{ lookup('community.hashi_vault.hashi_vault', 'secret=infra/data/github-runner:RUNNER_TOKEN token={{ vault_token }} url=http://vault-internal.kommanuthala.store:8200') }}}}
