@@ -19,3 +19,8 @@
     group: github
     remote_scr: yes
 
+- name: configure github runner
+  ansible.builtin.shell: ./config.cmd --url https://github.com/Thippareddykishor --token {{}}
+  args:
+    chdir: /actions-runner
+  become_user: github
