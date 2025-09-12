@@ -1,0 +1,21 @@
+- name: setup prompt
+  ansible.builtin.shell: set-prompt {{ tool_name }}
+
+- name: create github runner user
+  ansible.builtin.user:
+    name: github
+
+- name: create github actions folder
+  ansible.builtin.file:
+    group: github
+    owner: github 
+    path: /actions-runner
+
+- name: download github runner
+  ansible.builtin.unarchive:
+    src:  https://github.com/actions/runner/releases/download/v2.328.0/actions-runner-win-x64-2.328.0.zip -OutFile actions-runner-win-x64-2.328.0.zip
+    dest: /actions-runner
+    owner: github
+    group: github
+    remote_scr: yes
+
