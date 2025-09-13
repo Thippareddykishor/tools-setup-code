@@ -5,12 +5,19 @@
   ansible.builtin.user:
     name: github
 
-- name: create github actions folder
+# - name: create github actions folder
+#   ansible.builtin.file:
+#     group: github
+#     owner: github 
+#     path: /actions-runner
+#     state: directory
+
+- name: Create github actions folder
   ansible.builtin.file:
-    group: github
-    owner: github 
     path: /actions-runner
     state: directory
+    owner: github
+    group: github
 
 - name: download github runner
   ansible.builtin.unarchive: 
