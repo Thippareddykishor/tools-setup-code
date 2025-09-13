@@ -20,17 +20,6 @@
     group: github
     remote_src: yes
 
-# - name: Ensure hvac Python library is installed
-#   ansible.builtin.pip:
-#     name: hvac
-#     executable: /usr/bin/pip3.9
-#     state: present
-
-# - name: python lib
-#   ansible.builtin.pip: #pip3.11 install ansible hvac
-#     name: hvac
-#     executable: /usr/bin/pip3.11
-
 - name: configure github runner
   ansible.builtin.shell: ./config.sh --url https://github.com/Thippareddykishor --token {{ lookup('community.hashi_vault.hashi_vault', 'secret=infra/data/github-runner:RUNNER_TOKEN token={{ vault_token }} url=http://vault-private.kommanuthala.store:8200') }} 
   args:
