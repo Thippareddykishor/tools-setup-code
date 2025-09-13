@@ -21,7 +21,7 @@
     remote_src: yes
     
 - name: python lib
-  ansible.builtin.shell: #pip3.11 install ansible hvac
+  ansible.builtin.pip: #pip3.11 install ansible hvac
     name: hvac
     executable: /usr/bin/pip3.11
 
