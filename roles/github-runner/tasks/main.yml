@@ -21,10 +21,10 @@
     remote_src: yes
     
 - name: python lib
-  ansible.builtin.pip:
+  ansible.builtin.shell: #pip3.11 install ansible hvac
     name: hvac
     state: present
-    executable: pip3.11
+    executable: /usr/bin/pip3.11
 
 - name: configure github runner
   ansible.builtin.shell: ./config.cmd --url https://github.com/Thippareddykishor --token {{ lookup('community.hashi_vault.hashi_vault', 'secret=infra/data/github-runner:RUNNER_TOKEN token={{ vault_token }} url=http://vault-internal.kommanuthala.store:8200') }}
