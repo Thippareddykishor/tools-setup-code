@@ -19,7 +19,13 @@
     owner: github
     group: github
     remote_src: yes
-    
+
+- name: Ensure hvac Python library is installed
+  ansible.builtin.pip:
+    name: hvac
+    executable: /usr/bin/pip3.11
+    state: present
+
 # - name: python lib
 #   ansible.builtin.pip: #pip3.11 install ansible hvac
 #     name: hvac
