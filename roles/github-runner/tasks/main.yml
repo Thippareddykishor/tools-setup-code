@@ -23,7 +23,6 @@
 - name: python lib
   ansible.builtin.shell: #pip3.11 install ansible hvac
     name: hvac
-    state: present
     executable: /usr/bin/pip3.11
 
 - name: configure github runner
