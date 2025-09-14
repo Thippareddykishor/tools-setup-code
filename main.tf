@@ -12,10 +12,10 @@ variable "tools" {
         instance_type="t3.micro"
         port= 8200
     }
-  #  github-runner = {
-  #   instance_type= "t3.micro"
-  #   port = 443 #dummy port
-  #  }
+   github-runner = {
+    instance_type= "t3.micro"
+    port = 443 #dummy port
+   }
     
   }
   
