@@ -35,11 +35,11 @@
 - name: check already runner configured
   ansible.builtin.stat:
     path: /actions-runner/.runner
-  register: runner-stat
+  register: runner_stat
 
 - name: debug
   ansible.builtin.debug:
-    msg: " {{ runner-stat }} "
+    msg: " {{ runner_stat }} "
 
 - name: configure github runner
   ansible.builtin.shell: ./config.sh --url https://github.com/Thippareddykishor --token {{ lookup('community.hashi_vault.hashi_vault', 'secret=infra/data/github-runner:RUNNER_TOKEN token={{ vault_token }} url=http://vault-internal.kommanuthala.store:8200') }} --unattended
