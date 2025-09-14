@@ -35,7 +35,7 @@
 - name: check already runner configured
   ansible.builtin.stat:
     path: /actions-runner/.runner
-    register: runner-stat
+  register: runner-stat
 
 - name: debug
   ansible.builtin.debug:
