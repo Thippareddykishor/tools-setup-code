@@ -1,10 +1,10 @@
 [Unit]
-Description=GitHub Actions Runner
+Description=GitHub Actions Runner (Thippareddykishor.ip-172-31-31-71)
 After=network.target
 
 [Service]
 ExecStart=/actions-runner/runsvc.sh
-User=github
+User=gtihub
 WorkingDirectory=/actions-runner
 KillMode=process
 KillSignal=SIGTERM
