@@ -52,3 +52,10 @@
   ansible.builtin.template:
     src: github-runner.service
     dest: /etc/systemd/system/github-runner.service
+
+- name: start github service
+  ansible.builtin.systemd_Service:
+    name: github-runner
+    state: started
+    enabled: yes
+    daemon-reload: yes
