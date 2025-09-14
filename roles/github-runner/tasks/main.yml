@@ -46,8 +46,7 @@
   args:
     chdir: /actions-runner
   become_user: github
-  when: not runner_stat.stat.exists
-
+ 
 - name: copy service file
   ansible.builtin.template:
     src: github-runner.service
