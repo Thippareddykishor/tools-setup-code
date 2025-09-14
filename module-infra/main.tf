@@ -2,6 +2,7 @@ resource "aws_instance" "tool" {
   ami = var.ami_id
   instance_type = var.instance_type
   vpc_security_group_ids = [aws_security_group.tool_sg.id]
+  iam_instance_profile = aws_iam_instance_profile.main.name  
 
   tags = {
     Name= var.name
@@ -70,4 +71,9 @@ resource "aws_route53_record" "public" {
   records = [aws_instance.tool.public_ip]
   zone_id = var.zone_id
   type = "A"
+}
+
+resource "aws_iam_instance_profile" "main" {
+  name= "${var.name}-role"
+  role= aws_iam_role.main.name
 }
