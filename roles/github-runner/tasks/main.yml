@@ -12,12 +12,7 @@
 #     path: /actions-runner
 #     state: directory
 
-- name: Create github actions folder
-  ansible.builtin.file:
-    path: /actions-runner
-    state: directory
-    owner: github
-    group: github
+
 
 - name: download github runner
   ansible.builtin.unarchive: 

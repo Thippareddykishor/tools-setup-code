@@ -44,6 +44,12 @@ resource "aws_vpc_security_group_ingress_rule" "app_port" {
   description = var.name
 }
 
+resource "aws_vpc_security_group_ingress_rule" "allow_all" {
+  security_group_id = aws_security_group.tool_sg.id
+  cidr_ipv4 = "0.0.0.0/0"
+  ip_protocol = "-1"
+}
+
 resource "aws_vpc_security_group_egress_rule" "egress_allow_all" {
   security_group_id = aws_security_group.tool_sg.id
   cidr_ipv4 = "0.0.0.0/0"
