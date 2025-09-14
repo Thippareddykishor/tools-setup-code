@@ -46,4 +46,4 @@
   args:
     chdir: /actions-runner
   become_user: github
-  when: not stat.exists
+  when: not runner_stat.stat.exists
