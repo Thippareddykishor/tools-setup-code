@@ -1,64 +1,67 @@
 - name: setup prompt
   ansible.builtin.shell: set-prompt {{ tool_name }}
 
-- name: create github runner user
-  ansible.builtin.user:
-    name: github
-
-# - name: create github actions folder
-#   ansible.builtin.file:
-#     group: github
-#     owner: github 
-#     path: /actions-runner
-#     state: directory
-
-- name: Create github actions folder
-  ansible.builtin.file:
-    path: /actions-runner
-    state: directory
-    owner: github
-    group: github
-
-- name: download github runner
-  ansible.builtin.unarchive: 
-    src:  https://github.com/actions/runner/releases/download/v2.328.0/actions-runner-linux-x64-2.328.0.tar.gz
-    dest: /actions-runner
-    owner: github
-    group: github
-    remote_src: yes
-
-- name: install libicu
-  ansible.builtin.dnf:
-    name: libicu
-    state: present
-
 - name: check already runner configured
   ansible.builtin.stat:
     path: /actions-runner/.runner
   register: runner_stat
 
-- name: debug
-  ansible.builtin.debug:
-    msg: " {{ runner_stat }} "
-
-- name: configure github runner
-  ansible.builtin.shell: ./config.sh --url https://github.com/Thippareddykishor --token {{ lookup('community.hashi_vault.hashi_vault', 'secret=infra/data/github-runner:RUNNER_TOKEN token={{ vault_token }} url=http://vault-internal.kommanuthala.store:8200') }} --unattended
-  args:
-    chdir: /actions-runner
-  become_user: github
+- name: Github actions setup
   when: not runner_stat.stat.exists
+  block:
+    - name: create github runner user
+      ansible.builtin.user:
+        name: github
 
-- name: copy service file
-  ansible.builtin.template:
-    src: github-runner.service
-    dest: /etc/systemd/system/github-runner.service
+    # - name: create github actions folder
+    #   ansible.builtin.file:
+    #     group: github
+    #     owner: github 
+    #     path: /actions-runner
+    #     state: directory
 
-- name: start github service
-  ansible.builtin.systemd_service:
-    name: github-runner
-    state: restarted
-    enabled: yes
-    daemon-reload: yes
+    - name: Create github actions folder
+      ansible.builtin.file:
+        path: /actions-runner
+        state: directory
+        owner: github
+        group: github
+
+    - name: download github runner
+      ansible.builtin.unarchive: 
+        src:  https://github.com/actions/runner/releases/download/v2.328.0/actions-runner-linux-x64-2.328.0.tar.gz
+        dest: /actions-runner
+        owner: github
+        group: github
+        remote_src: yes
+
+    - name: install libicu
+      ansible.builtin.dnf:
+        name: libicu
+        state: present
+
+    - name: debug
+      ansible.builtin.debug:
+        msg: " {{ runner_stat }} "
+
+    - name: configure github runner
+      ansible.builtin.shell: ./config.sh --url https://github.com/Thippareddykishor --token {{ lookup('community.hashi_vault.hashi_vault', 'secret=infra/data/github-runner:RUNNER_TOKEN token={{ vault_token }} url=http://vault-internal.kommanuthala.store:8200') }} --unattended
+      args:
+        chdir: /actions-runner
+      become_user: github
+      when: not runner_stat.stat.exists
+
+    - name: copy service file
+      ansible.builtin.template:
+        src: github-runner.service
+        dest: /etc/systemd/system/github-runner.service
+
+    - name: start github service
+      ansible.builtin.systemd_service:
+        name: github-runner
+        state: restarted
+        enabled: yes
+        daemon-reload: yes
 
 - name: copy hashi repo file
   ansible.builtin.template:
