@@ -73,7 +73,3 @@ resource "aws_route53_record" "public" {
   type = "A"
 }
 
-resource "aws_iam_instance_profile" "main" {
-  name= "${var.name}-role"
-  role= aws_iam_role.main.name
-}
