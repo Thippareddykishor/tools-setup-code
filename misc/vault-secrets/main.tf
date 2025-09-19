@@ -7,7 +7,8 @@ terraform {
 }
 
 provider "vault" {
-  address = "http://vault-internal.kommanuthala.store:8200"
+  # address = "http://vault-internal.kommanuthala.store:8200"
+  address = "http://172.31.21.40:8200"
   token= var.vault_token
 }
 
