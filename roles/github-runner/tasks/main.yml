@@ -82,3 +82,15 @@
   ansible.builtin.dnf:
     name: kubectl
     state: installed
+
+- name: enable nodejs 
+  ansible.builtin.shell:
+    dnf module disable nodejs -y ; dnf module enable nodejs:20 -y
+
+- name: enable node js module
+  ansible.builtin.dnf:
+    name: nodejs
+
+- name: install maven
+  ansible.builtin.dnf:
+    name: maven
