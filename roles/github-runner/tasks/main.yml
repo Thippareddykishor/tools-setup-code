@@ -6,7 +6,6 @@
     name: common
     tasks_from: lvm
 
-
 - name: check already runner configured
   ansible.builtin.stat:
     path: /actions-runner/.runner

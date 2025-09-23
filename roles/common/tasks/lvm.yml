@@ -1,8 +1,18 @@
-- name: increase disk partition
-  ansible.builtin.shell:  growpart /dev/nvme0n1 4
+# - name: increase disk partition
+#   ansible.builtin.shell:  growpart /dev/nvme0n1 4
+#   ignore_errors: yes
+
+# - name: incrase LVM
+#   # ansible.builtin.shell: lvextend -r -L {{item.size}}G /dev/mapper/RootVG-{{item.lv}}
+#   ansible.builtin.shell: lvextend -r -L {{item.size}}G /dev/mapper/RootVG-{{item.lv}}
+#   loop: "{{ lv_input }}"
+#   ignore_errors: yes
+
+- name: Increase Disk Parition
+  ansible.builtin.shell: growpart /dev/{{disk_name}} 4
   ignore_errors: yes
 
-- name: incrase LVM
+- name: Increase LVM
   ansible.builtin.shell: lvextend -r -L {{item.size}}G /dev/mapper/RootVG-{{item.lv}}
   loop: "{{ lv_input }}"
   ignore_errors: yes
