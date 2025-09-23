@@ -4,6 +4,10 @@ resource "aws_instance" "tool" {
   vpc_security_group_ids = [aws_security_group.tool_sg.id]
   iam_instance_profile = aws_iam_instance_profile.main.name  
 
+  root_block_device {
+    volume_size = var.root_block_device 
+  }
+
   tags = {
     Name= var.name
   }

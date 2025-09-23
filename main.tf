@@ -8,4 +8,5 @@ module "tool_infra" {
   instance_type  = each.value["instance_type"]             # Replace with your instance type
   port           = each.value["port"] 
   iam_policy = each.value["iam_policy"]                    # Replace with your required port
+  root_block_device = each.value["root_block_device"]
 }
