@@ -1,10 +1,10 @@
 - name: setup prompt
   ansible.builtin.shell: set-prompt {{ tool_name }}
 
-- name: LVM
-  ansible.builtin.include_role:
-    name: common
-    tasks_from: lvm
+# - name: LVM
+#   ansible.builtin.include_role:
+#     name: common
+#     tasks_from: lvm
 
 - name: check already runner configured
   ansible.builtin.stat:
