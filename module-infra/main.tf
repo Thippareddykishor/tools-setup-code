@@ -10,6 +10,7 @@ resource "aws_instance" "tool" {
 
   tags = {
     Name= var.name
+    monitor = "true"
   }
 
   # instance_market_options {
