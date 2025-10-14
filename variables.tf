@@ -10,7 +10,7 @@ variable "tools" {
   default = {
     vault={
         instance_type="t3.micro"
-        port= {
+        ports= {
           vault =8200
         }
         root_block_device=20
@@ -21,7 +21,7 @@ variable "tools" {
     }
    github-runner = {
     instance_type= "t3.micro"
-    port = {} #dummy port
+    ports = {} #dummy port
     root_block_device=30
     iam_policy={
       Action=["*"]
