@@ -30,7 +30,7 @@ variable "tools" {
    }
     
 
-    elk_stack = {
+    elk-stack = {
       instance_type = "i3.large"
       ports = {
         elasticsearch =9200
