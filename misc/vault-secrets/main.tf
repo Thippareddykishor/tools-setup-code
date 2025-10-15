@@ -38,7 +38,7 @@ resource "vault_generic_secret" "elasticsearch" {
   data_json = <<EOT
   {
   "username"="elastic"
-  "password"=""
+  "password"="SCBuNFkr5Gz-TvaR_p53"
   }
   EOT
 }
