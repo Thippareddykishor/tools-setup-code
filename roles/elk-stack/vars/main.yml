@@ -7,5 +7,5 @@ lv_input:
   - { lv: varTmpVol,  size: 2 }
   - { lv: varVol,     size: 11 }
 
-  disk_name: xvda
+disk_name: xvda
   
