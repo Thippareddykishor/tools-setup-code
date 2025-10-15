@@ -9,7 +9,7 @@
 - name: copy elastic repo file
   ansible.builtin.template:
     src: elastic.repo
-    dest: /etc/yum.repod.d/elastic.repo
+    dest: /etc/yum.repos.d/elastic.repo
 
 - name: install ELK
   ansible.builtin.dnf:
