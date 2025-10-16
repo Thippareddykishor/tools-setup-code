@@ -36,9 +36,14 @@
     - logstash
     - nginx
 
-- name: copy logstash configuration
+# - name: copy logstash configuration
+#   ansible.builtin.template:
+#     src: logstash.conf
+#     dest: /etc/logstash/conf.d/logstash.conf
+#   notify: Restart handlers
+  
+- name: Copy Logstash configuration
   ansible.builtin.template:
     src: logstash.conf
     dest: /etc/logstash/conf.d/logstash.conf
   notify: Restart handlers
-  
