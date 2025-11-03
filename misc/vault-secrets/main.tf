@@ -66,7 +66,7 @@ resource "vault_generic_secret" "roboshop-dev-cart" {
   data_json = <<EOT
   {
   "REDIS_HOST": "redis-dev.kommanuthala.store",
-  "CATALOGUE_HOST": "catalogue-dev.kommanuthala.store",
+  "CATALOGUE_HOST": "catalogue",
   "CATALOGUE_PORT": "8080"
   }
   EOT
@@ -99,9 +99,9 @@ resource "vault_generic_secret" "roboshop-dev-payment" {
   path = "${vault_mount.roboshop-dev.path}/payment"
   data_json = <<EOT
   {
-  "CART_HOST" : "cart-dev.kommanuthala.store",
+  "CART_HOST" : "cart",
   "CART_PORT" : "8080",
-  "USER_HOST" : "user-dev.kommanuthala.store",
+  "USER_HOST" : "user",
   "USER_PORT" : "8080",
   "AMQP_HOST" : "rabbitmq-dev.kommanuthala.store",
   "AMQP_USER" : "roboshop",
@@ -114,8 +114,12 @@ resource "vault_generic_secret" "roboshop-dev-shipping" {
   path = "${vault_mount.roboshop-dev.path}/shipping"
   data_json = <<EOT
   {
-  "CART_ENDPOINT": "cart-dev.kommanuthala.store:8080",
-  "DB_HOST" : "mysql-dev.kommanuthala.store"
+  "CART_ENDPOINT": "cart:8080",
+  "DB_HOST"      : "mysql-dev.kommanuthala.store",
+  "DB_TYPE"      :  "mysql",
+  "APP_GIT_URL"  :   "https://github.com/roboshop-devops-project-v3/shipping"
+  "DB_USER"      :   "root"
+  "DB_PASS"      :    "RoboShop@1"
   }
   EOT
 }
