@@ -117,8 +117,8 @@ resource "vault_generic_secret" "roboshop-dev-shipping" {
   "CART_ENDPOINT": "cart:8080",
   "DB_HOST"      : "mysql-dev.kommanuthala.store",
   "DB_TYPE"      :  "mysql",
-  "APP_GIT_URL"  :   "https://github.com/roboshop-devops-project-v3/shipping"
-  "DB_USER"      :   "root"
+  "APP_GIT_URL"  :   "https://github.com/roboshop-devops-project-v3/shipping",
+  "DB_USER"      :   "root",
   "DB_PASS"      :    "RoboShop@1"
   }
   EOT
