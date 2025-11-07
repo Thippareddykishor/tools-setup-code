@@ -124,6 +124,7 @@ resource "vault_generic_secret" "roboshop-dev-shipping" {
   "APP_GIT_URL"  :   "https://github.com/roboshop-devops-project-v3/shipping",
   "DB_USER"      :   "root",
   "DB_PASS"      :    "RoboShop@1"
+  "NEW_RELIC_LICENSE_KEY" : ""
   }
   EOT
 }
